@@ -1,0 +1,18 @@
+destination: ./_site
+auto:        false
+lsi:         false
+server_port: 4000
+pygments:    true
+markdown:    maruku
+permalink:   date
+maruku:
+  use_tex:    false
+  use_divs:   false
+  png_dir:    images/latex
+  png_url:    /images/latex
+  toc:        true
+exclude:    readme.md
+wicket:
+    version:    1.5.5
+    released:   2012-01-23
+    versions:   [1.5.5, 1.4.19, 1.4-SNAPSHOT, 1.5-SNAPSHOT, 6.0-SNAPSHOT]
