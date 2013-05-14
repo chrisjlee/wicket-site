@@ -1,0 +1,107 @@
+// =========== Mixins
+
+
+.mixin-animation(@name, @duration: 300ms, @delay: 0, @ease: ease) {
+    -webkit-animation: @name @duration @delay @ease;
+    -moz-animation: @name @duration @delay @ease;
+    -ms-animation: @name @duration @delay @ease;
+}
+
+.mixin-background-clip(@clip) {
+    -webkit-background-clip: @clip;
+    -moz-background-clip: @clip;
+    -o-background-clip: @clip;
+    background-clip: @clip;
+}
+
+.mixin-border-radius(@radius) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    -ms-border-radius: @radius;
+    -o-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.mixin-box-shadow(@shadow) {
+    -webkit-box-shadow: @shadow;
+    -moz-box-shadow: @shadow;
+    -o-box-shadow: @shadow;
+    box-shadow: @shadow;
+}
+
+.mixin-box-sizing(@box) {
+    -webkit-box-sizing: @box;
+    -moz-box-sizing: @box;
+    -ms-box-sizing: @box;
+    -o-box-sizing: @box;
+    box-sizing: @box;
+}
+
+.mixin-filter(@filter) {
+    -webkit-filter: @filter;
+    -moz-filter: @filter;
+    -o-filter: @filter;
+    filter: @filter;
+}
+
+.mixin-hyphens(@hyphens) {
+    -webkit-hyphens: @hyphens;
+    -moz-hyphens: @hyphens;
+    -o-hyphens: @hyphens;
+    hyphens: @hyphens;
+}
+
+
+.mixin-transform(@transform) {
+    -webkit-transform: @transform;
+    -moz-transform: @transform;
+    -ms-transform: @transform;
+    -o-transform: @transform;
+    transform: @transform;
+}
+
+.mixin-transition(@transition) {
+    -webkit-transition: @transition;
+    -moz-transition: @transition;
+    -o-transition: @transition;
+    transition: @transition;
+}
+
+.mixin-columns(@count, @gap) {
+    -webkit-column-count: @count;
+    -webkit-column-gap : @gap;
+    -moz-column-count: @count;
+    -moz-column-gap: @gap;
+    -o-column-count: @count;
+    -o-column-gap: @gap;
+    column-count: @count;
+    column-gap: @gap;
+}
+
+.mixin-columns-rule(@size, @style, @color) {
+    -webkit-column-rule-width: @size;
+    -webkit-column-rule-style: @style;
+    -webkit-column-rule-color: @color;
+    -moz-column-rule-width: @size;
+    -moz-column-rule-style: @style;
+    -moz-column-rule-color: @color;
+    -o-column-rule-width: @size;
+    -o-column-rule-style: @style;
+    -o-column-rule-color: @color;
+    column-rule-width: @size;
+    column-rule-style: @style;
+    column-rule-color: @color;
+}
+
+.mixin-gradient(@side, @start, @end) {
+    background-color: @end;
+    background-image: -webkit-linear-gradient(@side, @start, @end);
+    background-image: -moz-linear-gradient(@side, @start, @end);
+    background-image: -ms-linear-gradient(@side, @start, @end);
+    background-image: -o-linear-gradient(@side, @start, @end);
+    background-image: linear-gradient(@side, @start, @end);
+}
+
+.mixin-gradient-ie(@start, @end) {
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=@{start}, endColorstr=@{end})";
+}

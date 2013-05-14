@@ -1,0 +1,39 @@
+@import '../_core/_settings.less';
+@import '../_core/_mixins.less';
+
+#mvncmd {
+	background-color: #FF9926;
+	color: @white;
+	.mixin-border-radius(3px);
+    line-height: 2em;
+    padding: 1em 2em 2em 2em;
+
+	label {
+	  display: block;
+	  margin-top: 0.5em;
+	}
+	button,
+	input,
+	select,
+	textarea {
+	  display: block;
+	  width: 100%;
+	  border: none;
+	  border-radius: 3px;
+	  padding: 0.5em;
+	  color: #606060;
+	  height: 3em;
+	}
+	textarea {
+	  height: 15em;
+	}
+	button {
+	  background-color: #E68A00;
+	  color: white;
+	  height: 3em;
+	  margin-top: 1em;
+	  font-size: 1em;
+	  font-weight: 200;
+	}
+}
+

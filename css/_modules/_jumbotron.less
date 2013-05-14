@@ -1,0 +1,39 @@
+@import '../_core/_layout.less';
+
+.jumbotron {
+	.l-focus;
+	text-align: center;
+	background-color: #1099CC;
+	color: white;
+	border-radius: 3px;
+	font-size: 1.5em;
+	font-weight: 200;
+	padding-top: 2em;
+	padding-bottom: 2em;
+	h1 {
+		font-family: 'League Gothic', sans-serif;
+		font-weight: normal;
+		font-size: 96px;
+		text-transform: uppercase;
+		vertical-align: middle;
+		display:inline-block;
+		height:100px;
+		margin-top: 0;
+		margin-bottom: 0;
+		.logo-helper {
+		    vertical-align: middle;
+			display:inline-block;
+		}
+		img { 					
+			display: inline-block;
+			vertical-align: middle; 
+			margin-top: -10px;
+			max-height: 100px;
+			max-width: 100px;}
+	}
+	p {
+		margin: 0 auto;
+		padding-top: 2em;
+		.mixin-grid(48,8,8);
+	}
+}

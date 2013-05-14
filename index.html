@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Apache Wicket</title>
+	<meta charset="utf8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="css/syntax.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen">
+
+	<script type="text/javascript" charset="utf-8" src="javascript/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="javascript/ZeroClipboard-1.1.7.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('a[href^="/#"]').on('click',function (e) {
+			    e.preventDefault();
+			    var target = this.hash,
+			    $target = $(target);
+			    $('html, body').stop().animate({
+			        'scrollTop': $target.offset().top - 80
+			    }, 600, 'swing', function () {
+			        window.location.hash = target;
+			    });
+			});
+
+			ZeroClipboard.setDefaults( { moviePath: '/javascript/ZeroClipboard-1.1.7.swf' } );
+			var clip = new ZeroClipboard(document.getElementById("cmdLineCopy"));
+			clip.on( 'noflash', function ( client, args ) {
+				document.getElementById("cmdLineCopy").style.display = 'none';
+			});
+			clip.on( 'wrongflash', function ( client, args ) {
+				document.getElementById("cmdLineCopy").style.display = 'none';
+			});
+			$(document).resize(function() {
+				clip.reposition();
+			});
+		});
+
+		function changeIt()
+		{
+			var groupId = document.getElementById("groupId").value;
+			var artifactId = document.getElementById("artifactId").value;
+			var version = document.getElementById("version").value;
+			var cmd;
+			if(version.match(/^1\.[34]/))
+				cmd = 'mvn archetype:create -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion=' + version + ' -DgroupId=' + groupId + ' -DartifactId=' + artifactId;						
+			else
+				cmd = 'mvn archetype:generate -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion=' + version + ' -DgroupId=' + groupId + ' -DartifactId=' + artifactId;						
+
+			if (version.match(/.*SNAPSHOT/))
+				cmd += ' -DarchetypeRepository=https://repository.apache.org/content/repositories/snapshots/';
+			else
+				cmd += ' -DarchetypeRepository=https://repository.apache.org/';
+			cmd += ' -DinteractiveMode=false'; 
+			document.getElementById("cmdLine").value = cmd;
+		}
+	</script>
+</head>
+<body>
+	<header id="menu">
+		<div class="container">
+			<a href="/#main" class="wicket-logo">Apache <img src="img/logo-white.png" width="48" height="48" alt="*"> Wicket</a>
+			<nav>
+				<ul>
+					<li><a href="/#introduction">overview</a></li>
+					<li><a href="/#news">news</a></li>
+					<li><a href="/#quickstart">get started</a></li>
+					<li><a href="/#documentation">documentation</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<main id="main">
+		<div class="l-container">
+			<section class="jumbotron">
+				<h1 class="wicket-logo"><span class="logo-helper">Apache&nbsp;</span><img src="img/wicket-logo.png" width=100 height=100 alt="*"><span class="logo-helper">&nbsp;Wicket</span></h1>
+				<p>A component-oriented Java web framework that helps you write maintainable, secure and scalable web applications using just Java and HTML.</p>
+				<p>Current version: 6.7.0<br>released on 12 April 2013</p>
+			</section>
+			<section id="introduction">
+				<header>
+					<h1>Introducing Apache Wicket</h1>
+					<p>Discover why developers love Wicket</p>
+				</header>
+				<div class="l-clearfix">
+					<article class="l-one-third">
+						<header>
+							<img src="img/java-wicket-html5.png">
+							<h3>Just Java &amp; HTML</h3>
+						</header>
+						<p>Leverage what you know about Java or your favorite HTML editor to write Wicket applications. With pure Java code and HTML markup Wicket is the go-to web framework for purists.</p>
+					</article>
+					<article class="l-one-third">
+						<header>
+							<img src="img/wicket-safe.png">
+							<h3>Secure by default</h3>
+						</header>
+						<p>URLs do not expose sensitive information and all component paths are session-relative. Wicket keeps your model private except those parts you explicitly expose.</p>
+					</article>
+					<article class="l-one-third">
+						<header>
+							<img src="img/wicket-components.png">
+							<h3>Maintainable code</h3>
+						</header>
+						<p>Pages and Components in Wicket are real Java objects that support encapsulation, inheritance and events. Create high level components with ease and bundle its stylesheets, JavaScript and other resources into one reusable package.</p>
+					</article>
+				</div>
+				<div class="l-clearfix">
+					<article class="l-one-third">
+						<h3>Internationalization</h3>
+						<p>With support of over 25 languages out-of-the-box, Wicket let's you get started in your own language, or a second language with no effort. You can provide alternative languages on the application, page, or even component level.</p>
+					</article>
+					<article class="l-one-third">
+						<h3>Ajax components</h3>
+						<p>Write Ajax applications without having to write a single line of JavaScript code. Wicket's Ajax functionality makes it trivial to update selected parts of a UI, and comes with a great selection of basic Ajax components.</p>
+					</article>
+					<article class="l-one-third">
+						<h3>Injection support for CDI, Spring and Guice</h3>
+						<p>Inject your services into your pages and components with the technology of your choosing: Wicket provides integration with CDI (JSR-305), Spring and Guice.</p>
+					</article>
+				</div>
+				<div class="l-clearfix">
+					<article class="l-one-third">
+						<h3>JavaEE support</h3>
+						<p>If you are using the Web profile of JavaEE 6, you can leverage Bean Validation and CDI with Wicket's integrations for these specifications.</p>
+					</article>
+					<article class="l-one-third">
+						<h3>JavaEE support</h3>
+						<p>If you are using the Web profile of JavaEE 6, you can leverage Bean Validation and CDI with Wicket's integrations for these specifications.</p>
+					</article>
+				</div>
+				<div class="l-clearfix">
+					<article class="l-one-third">
+						<h3>Multi-tab and window support</h3>
+						<p>No more pain while keeping taps on multiple tabs and windows. Wicket's automatic state storage ensures that your users can open pages in new tabs and windows without causing problems.</p>
+					</article>
+					<article class="l-one-third">
+						<h3>Test your pages and components</h3>
+						<p>With WicketTester you can achieve testing coverage your QA department can only dream of. Test your pages without having to run inside a browser, or start a container. Test your components directly, check their rendered markup tags, attributes and contents with ease.</p>
+					</article>
+					<article class="l-one-third">
+						<h3>Pluggable Ajax support</h3>
+						<p>While Wicket ships with JQuery as the backing library for Ajax, you can replace the innards of Wicket Ajax with any other library of your choosing.</p>
+					</article>
+				</div>
+			</section>
+			<section id="news">
+				<header>
+					<h1>News</h1>
+					<p>Get the latest updates to releases, security bulletins and more</p>
+				</header>
+				<article class="l-two-third" id="wicket-6.7.0">
+					<h2>Apache Wicket 6.7.0 brings webfonts, rendering to a String and more</h2>
+					<p>The Apache Wicket PMC is proud to announce Apache Wicket 6.7.0!</p>
+					<h4>Webfonts are now supported</h4>
+					<p>Our resource guard that prevents access to classpath resources that are not intended to be shared through the web server is a whitelist of permissable resource extensions. Typically images, JavaScript files, stylesheets are on the whitelist, but the file types for webfonts were blocked. From Wicket 6.7 and onward you can now embed webfonts with your components and link to them from your stylesheets.</p>
+					<h4>Render a page or component to a String</h4>
+					<p>One of the issues that keeps propping up on the user lists is the ability to render a page or component to a String so that you can use Wicket to render HTML email messages. Now you can use ComponentRenderer to actually do so without having to resort to other less obvious methods.</p>
+					<p>ComponentRenderer exposes two methods: renderComponent and renderPage and they do exactly what their names suggest. Happy emailing!</p>
+					<h4>Using this release</h4>
+					<p>With Apache Maven update your dependency to (and don’t forget to update any other dependencies on Wicket projects to the same version):</p>
+					<pre>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt;
+    &lt;artifactId&gt;wicket-core&lt;/artifactId&gt;
+    &lt;version&gt;6.7.0&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+					<p>Or download and build the distribution yourself, or use our convenience binary package</p>
+					<ul>
+						<li>
+							Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.7.0">http://www.apache.org/dyn/closer.cgi/wicket/6.7.0</a>
+						</li>
+						<li>
+							Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.7.0/binaries">http://www.apache.org/dyn/closer.cgi/wicket/6.7.0/binaries</a>
+						</li>
+					</ul>
+					<h4>Upgrading from earlier versions</h4>
+					<p>If you upgrade from 6.y.z this release is a drop in replacement. If you come from a version prior to 6.0.0, please read our Wicket 6 migration guide found at
+					<a href="http://s.apache.org/wicket-6.0-migration">http://s.apache.org/wicket-6.0-migration</a>
+					</p>
+					<p>Have fun!</p>
+					<p>— The Wicket team</p>
+					<p><a href="#">Read more</a></p>
+				</article>
+				<div class="l-one-third">
+					<h2>Older news</h2>
+					<p>Note that you can subscribe to our <a href="#">RSS feed</a> to get updates in your favorite RSS reader the moment they happen.</p>
+					<div class="summary">
+						<h3>CVE-2012-5636 - Apache Wicket XSS vulnerability</h3>
+						<p>Vendor: The Apache Software Foundation<br>Versions Affected: Apache Wicket 1.4.x, 1.5.x and 1.6.x<br>Description:
+						It is possible for JavaScript statements to break out of a &lt;script&gt; tag in the rendered response.</p>
+						<a href="#">Read more</a>
+					</div>
+					<div class="summary">
+						<h3>Apache Wicket 1.5.10 released</h3>
+						<p>This is the tenth maintenance release of the Wicket 1.5.x series. This release brings over 28 bug fixes and improvements. Git tag Changelog To use...</p>
+						<a href="#">Read more</a>
+					</div>
+					<div class="summary">
+						<h3>Apache Wicket 6.6.0 brings attribute for html label tags, invalidated session callbacks and more</h3>
+						<p>The Apache Wicket PMC is proud to announce Apache Wicket 6.6.0!</p>
+						<a href="#">Read more</a>
+					</div>
+					<div class="summary">
+						<h3>Apache Wicket 6.5.0 brings Behavior.onRemove(Component), global updaters for Ajax request attributes and more</h3>
+						<p>The Apache Wicket PMC is proud to announce Apache Wicket 6.5.0!</p>
+						<a href="#">Read more</a>
+					</div>
+				</div>
+			</section>
+			<section id="quickstart">
+				<header>
+					<img src="img/getstarted.png" alt=".oO" title="Ready, set, go!" width="260" height="106">
+					<h1>Get started!</h1>
+					<p>With the quickstart you’ll be up and running in seconds</p>
+				</header>
+				<article class="l-two-third">
+					<h3>Before you start</h3>
+					<p>The Wicket quickstart uses <a href="http://maven.apache.org">Apache Maven</a> to make it really fast to get started. You should have Maven installed and working before you can use the quickstart wizard.</p>
+					<h3>5 small steps to a web application</h3>
+					<p>
+						<ol>
+							<li>Fill in the Maven coordinates for your project in the wizard and select the appropriate Wicket version</li>
+							<li>copy the generated commandline to your clipboard and paste it in a terminal (dos box)</li>
+							<li>open the project in your IDE of choice</li>
+							<li>start the Start class in the src/test/java folder</li>
+							<li>open your browser to <a href="http://localhost:8080" target="_blank">http://localhost:8080</a></li>
+						</ol>
+						And you're done!
+				</article>
+				<div class="l-one-third" id="mvncmd">
+					<div>
+						<label for="groupId" title="Base Package">group id</label>
+						<input id="groupId" onkeyup="changeIt();" type="text" value="com.mycompany.myproject">
+					</div>
+					<div>
+						<label for="artifactId" title="Project Name">artifact id</label> 
+						<input id="artifactId" onkeyup="changeIt();" type="text" value="myproject">
+					</div>
+					<div>
+						<label for="version" title="Wicket Version">wicket version</label>
+						<select id="version" onchange="changeIt();">
+							<option value="6.8.0-SNAPSHOT">6.8.0-SNAPSHOT</option>
+							<option value="1.5-SNAPSHOT">1.5-SNAPSHOT</option>
+							<option value="1.4-SNAPSHOT">1.4-SNAPSHOT</option>
+							<option value="1.4.22">1.4.22</option>
+							<option value="1.5.10">1.5.10</option>
+							<option selected="selected" value="6.7.0">6.7.0</option>
+						</select>
+					</div>
+					<div>
+						<label for="cmdLine" id="cmdLabel">generated command line</label>
+						<textarea id="cmdLine" onfocus="this.select();"></textarea>
+						<script>changeIt();</script>
+					</div>
+					<div>
+						<button id="cmdLineCopy" data-clipboard-target='cmdLine'>copy to clipboard</button>
+					</div>
+				</div>			
+
+				<section id="download">
+					<header>
+						<h1>Download</h1>
+						<p>Get the most recent version of Wicket in one source package</p>
+					</header>
+					<div class="l-full">
+						<p>Apache Wicket offers both source and binary distributions, as well as Maven artefacts distributed through Maven Central. Most users get Apache Wicket using <a href="http://maven.apache.org">Apache Maven's</a> dependency management, which is also the most convenient way of obtaining the latest and greatest Wicket version.</p>
+						<h3>Don't mix Wicket versions</h3>
+						<p>You cannot mix different Wicket versions in your project. You should always use the artifacts from a particular release. For example it is <strong>not</strong> possible to use Wicket Extensions 1.5 in a Wicket 6 project. The same goes for 3rd party libraries: make sure you always use a compatible version of your 3rd party library.</p>
+					</div>
+					<article class="l-two-third">
+						<h2>Download Apache Wicket 6</h2>
+						<p>The most recent release is <span class="version">6.7.0</span>.</p>
+						<h3>Requirements</h3>
+						<p>Wicket 6 requires JDK 6.0 or newer and a servlet container that supports the servlet 2.4 or newer specification. Building Wicket from source requires Apache Maven 3 or newer.</p>
+						<h3>Distributions</h3>
+						   Download one of the following distributions:
+							<ul>
+								<li>
+									source:<br>
+									<a href="http://www.apache.org/dyn/closer.cgi/wicket/6.7.0/apache-wicket-6.7.0.zip">apache-wicket-6.7.0.zip</a> (<a href="http://www.eu.apache.org/dist/wicket/6.7.0/apache-wicket-6.7.0.zip.asc">asc</a>) or<br>
+									<a href="http://www.apache.org/dyn/closer.cgi/wicket/6.7.0/apache-wicket-6.7.0.tar.gz">apache-wicket-6.7.0.tar.gz</a> (<a href="http://www.eu.apache.org/dist/wicket/6.7.0/apache-wicket-6.7.0.tar.gz.asc">asc</a>)
+								</li>
+								<li>
+									binary:<br>
+									<a href="http://www.apache.org/dyn/closer.cgi/wicket/6.7.0/binaries/apache-wicket-6.7.0-bin.zip">apache-wicket-6.7.0-bin.zip</a> (<a href="http://www.eu.apache.org/dist/wicket/6.7.0/binaries/apache-wicket-6.7.0-bin.zip.asc">asc</a>) or<br>
+									<a href="http://www.apache.org/dyn/closer.cgi/wicket/6.7.0/binaries/apache-wicket-6.7.0-bin.tar.gz">apache-wicket-6.7.0-bin.tar.gz</a> (<a href="http://www.eu.apache.org/dist/wicket/6.7.0/binaries/apache-wicket-6.7.0-bin.tar.gz.asc">asc</a>)
+								</li>
+							</ul>
+							You should validate your downloaded distribution using the linked <tt>asc</tt> GPG signature. Read more detailed information on <a href="#">verifying Apache Wicket releases</a>.
+						</p>
+						<h3>Maven users</h3>
+						<p>Use the following Maven dependency to start using the most recent Wicket 6 jar.</p>
+						<pre>&lt;dependency>
+    &lt;groupId>org.apache.wicket&lt;/groupId>
+    &lt;artifactId>wicket-core&lt;/artifactId>
+    &lt;version>6.7.0&lt;/version>
+&lt;/dependency></pre>
+					</article>
+					<article class="l-one-third">
+						<h2>Looking for older releases?</h2>
+						<p>If you are looking for older releases of Wicket (1.5 or 1.4), please see the <a href="downloads.html">downloads archive</a> for more information on our older releases.</p>
+					</article>
+				</article>
+			</section>
+			<section id="documentation">
+				<header>
+					<h1>Documentation</h1>
+					<p>All the things you want to know about Wicket but are afraid to ask</p>
+				</header>
+				<article id="developers" class="l-half">
+					<h2>Documentation for developers</h2>
+					<p>If you are a developer working with Wicket, 
+					<h3>Examples</h3>
+					<ul>
+						<li><a href="/examples/helloworld.html">Hello, World!</a> - Everybody's favorite example</li>
+						<li><a href="/examples/navomatic.html">Navomatic</a> - Automatic navigation using Borders and Links</li>
+						<li><a href="/examples/guestbook.html">Guest Book</a> - A tiny blogger demonstrating ListViews and Forms</li>
+						<li><a href="/examples/dropdownchoice.html">Using DropDownChoice</a> - A short example explaining the DropDownChoice component</li>
+						<li><a href="/examples/markupinheritance.html">Markup Inheritance</a> - A short example explaining markup inheritance</li>
+						<li><a href="/examples/ajaxcounter.html">Ajax Counter</a> - A short example explaining Wicket’s Ajax features building a counter</li>
+						<li><a href="/examples/usingfragments.html">Using fragments</a> - A short example explaining Wicket’s fragments feature. Fragments are a type of inline panels</li>
+					</ul>
+
+					<h3>User contributed documentation</h3>
+					<ul>
+						<li><a href="http://cwiki.apache.org/WICKET">Wiki</a></li>
+						<li><a href="http://cwiki.apache.org/WICKET/reference-library.html">Reference guide</a></li>
+						<li><a href="/learn/blogs.html">Blogs</a></li>
+					</ul>
+
+					<h3>Getting help</h3>
+					<p></p>
+
+					<h3>Books about Wicket</h3>
+					<div class="thumbs">
+						<div class="l-third">
+							<img src="img/book-apache-wicket-cookbook.png" alt="Apache Wicket Cookbook">
+							Apache Wicket Cookbook
+							Igor Vaynberg
+						</div>
+						<div class="l-third">
+							<img src="img/book-enjoying-webdev-wicket.png" alt="Enjoying Web Development with Wicket">
+							Enjoying Web Development with Wicket
+							Kent Tong
+						</div>
+						<div class="l-third">
+							<img src="img/book-praxisbuch-wicket.png" alt="Praxisbuch Wicket">
+							Praxisbuch Wicket
+							Michael Mossman
+						</div>
+						<!--
+						<img src="img/">
+						<img src="img/">
+						<img src="img/">
+						<img src="img/">
+						<img src="img/">
+							-->
+					</div>
+				</article>
+				<article id="contributors" class="l-half">
+					<h2>Documentation for contributors</h2>
+					<p>This section is particularly of interest for those who want to contribute to Wicket.</p>
+
+					<h3>How to contribute</h3>
+					<p>Here's a list of documents that explain how you can best help the Wicket team:
+						<ul>
+							<li><a href="/contribute/write.html">Write documentation</a></li>
+							<li><a href="/contribute/patch.html">Provide a patch</a></li>
+							<li><a href="/contribute/support.html">Answer questions</a></li>
+						</ul>
+					</p>
+					<h3>Committers</h3>
+					<p>
+						Here's a list of tasks that only committers can do:
+						<ul>
+							<li><a href="/contribute/release.html">Build a release</a></li>
+						</ul>
+					</p>
+				</article>
+			</section>
+		</div>
+	</main>
+	<footer>
+		<div class="l-container">Copyright © 2012 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
+	</footer>
+</body>
+</html>
