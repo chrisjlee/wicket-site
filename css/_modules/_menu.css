@@ -1,7 +1,7 @@
 body > header {
-  height: 80px;
+  height: 96px;
   width: 100%;
-  background-color: #1099CC;
+  background-color: #0d89b7;
   color: white;
   text-align: center;
   position: fixed;
@@ -21,7 +21,7 @@ body > header .wicket-logo {
   font-family: 'League Gothic', sans-serif;
   font-weight: normal;
   font-size: 48px;
-  line-height: 48px;
+  line-height: 64px;
   text-transform: uppercase;
 }
 body > header .wicket-logo img {
@@ -30,6 +30,7 @@ body > header .wicket-logo img {
 }
 body > header nav ul {
   list-style: none;
+  line-height: 32px;
 }
 body > header nav li {
   display: inline;
@@ -39,5 +40,16 @@ body > header nav li + li {
   margin-left: 2em;
 }
 body {
-  margin-top: 80px;
+  margin-top: 96px;
+}
+body.menu-hidden {
+  margin-top: 0;
+}
+body.menu-hidden > header {
+  z-index: 0;
+  position: relative;
+  height: 32px;
+}
+body.menu-hidden .wicket-logo {
+  display: none;
 }

@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen">
 
 	<script type="text/javascript" charset="utf-8" src="javascript/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="javascript/affix.js"></script>
 	<script type="text/javascript" charset="utf-8" src="javascript/ZeroClipboard-1.1.7.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -57,10 +58,15 @@
 		}
 	</script>
 </head>
-<body>
-	<header id="menu">
+<body id="top" class="menu-hidden">
+	<section id="jumbotron">
+		<h1 class="wicket-logo"><span class="logo-helper">Apache&nbsp;</span><img src="img/wicket-logo.png" width=100 height=100 alt="*"><span class="logo-helper">&nbsp;Wicket</span></h1>
+		<p>A component-oriented Java web framework that helps you write maintainable, secure and scalable web applications using just Java and HTML.</p>
+		<p>Current version: 6.7.0<br>released on 12 April 2013</p>
+	</section>
+	<header id="menu" data-spy="affix" data-offset-top="250">
 		<div class="container">
-			<a href="/#main" class="wicket-logo">Apache <img src="img/logo-white.png" width="48" height="48" alt="*"> Wicket</a>
+			<a href="/#top" class="wicket-logo">Apache <img src="img/logo-white.png" width="48" height="48" alt="*"> Wicket</a>
 			<nav>
 				<ul>
 					<li><a href="/#introduction">overview</a></li>
@@ -71,13 +77,8 @@
 			</nav>
 		</div>
 	</header>
-	<main id="main">
+	<main>
 		<div class="l-container">
-			<section class="jumbotron">
-				<h1 class="wicket-logo"><span class="logo-helper">Apache&nbsp;</span><img src="img/wicket-logo.png" width=100 height=100 alt="*"><span class="logo-helper">&nbsp;Wicket</span></h1>
-				<p>A component-oriented Java web framework that helps you write maintainable, secure and scalable web applications using just Java and HTML.</p>
-				<p>Current version: 6.7.0<br>released on 12 April 2013</p>
-			</section>
 			<section id="introduction">
 				<header>
 					<h1>Introducing Apache Wicket</h1>

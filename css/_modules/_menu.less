@@ -1,9 +1,9 @@
 @import '../_core/_settings.less';
 
 body > header {
-	height: 80px;
+	height: 96px;
 	width: 100%;
-	background-color: #1099CC;
+	background-color: @darker-blue;
 	color: white;
 	text-align: center;
 	position: fixed;
@@ -23,13 +23,14 @@ body > header {
 		font-family : 'League Gothic', sans-serif;
 		font-weight : normal;
 		font-size : 48px;
-		line-height: 48px;
+		line-height: 64px;
 		text-transform : uppercase;
 		img { padding: 0; margin: 0; }
 	}
 	nav {
 		ul {
 			list-style: none;
+			line-height: 32px;
 		}
 		li {
 			display: inline;
@@ -40,5 +41,18 @@ body > header {
 }
 
 body {
-	margin-top: 80px;
+	margin-top: 96px;
+}
+
+body.menu-hidden {
+	margin-top: 0;
+	
+	> header {
+		z-index: 0;
+		position: relative;
+		height: 32px;
+	}
+	.wicket-logo {
+		display: none;
+	}
 }
