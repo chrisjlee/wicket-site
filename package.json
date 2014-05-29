@@ -1,0 +1,27 @@
+{
+  "name": "wicket-site",
+  "version": "0.1.0",
+  "description": "Wicket Site",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chrisjlee/wicket-site.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chrisjlee/wicket-site/issues"
+  },
+  "homepage": "https://github.com/chrisjlee/wicket-site",
+  "devDependencies": {
+    "gulp": "^3.6.2",
+    "gulp-autoprefixer": "0.0.7",
+    "gulp-jekyll": "0.0.0",
+    "gulp-minify-css": "^0.3.4",
+    "gulp-rename": "^1.2.0",
+    "gulp-ruby-sass": "^0.5.0"
+  }
+}
