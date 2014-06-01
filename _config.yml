@@ -1,2 +1,2 @@
 name: Apache Wicket
-pygments: true
+highlighter: true
